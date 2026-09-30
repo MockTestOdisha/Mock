@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odia Mock Test Platform</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f7f6; margin: 0; padding: 20px; text-align: center; }
+        h1 { color: #333; }
+        .test-card { background: white; padding: 20px; margin: 15px auto; max-width: 500px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: left; }
+        button { background: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Odia Competitive Exam Mock Platform</h1>
+    <div id="test-list">Loading available tests...</div>
+
+    <script>
+        fetch('/api/tests')
+            .then(res => res.json())
+            .then(tests => {
+                const container = document.getElementById('test-list');
+                if(tests.length === 0) {
+                    container.innerHTML = '<p>No tests available right now.</p>';
+                    return;
+                }
+                container.innerHTML = tests.map(t => `
+                    <div class="test-card">
+                        <h3>${t.title}</h3>
+                        <p>${t.description}</p>
+                        <p><strong>Duration:</strong> ${t.duration_minutes} Minutes | <strong>Marks:</strong> ${t.total_marks}</p>
+                        <button onclick="alert('Test starting soon!')">Start Test</button>
+                    </div>
+                `).join('');
+            });
+    </script>
+</body>
+</html>
