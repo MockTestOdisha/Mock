@@ -19,12 +19,17 @@
         <button onclick="loginStudent()">Login</button>
         <p id="error-message" style="color: red; display: none; margin-top: 10px; font-size: 14px;">Invalid credentials</p>
     </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script>
-        function loginStudent() {
-            // For now, this just proves the button works. 
-            // Next step: we will connect this to Supabase to check real passwords.
-            alert("Login button clicked! Let's connect the database next.");
+              const supabaseUrl = https://jhojnppvnpnxmssbnsqm.supabase.co/rest/v1/;
+      const supabaseKey = sb_publishable_t2x8lZTf25dzSTVe7btvNQ_gpvnV5L5;
+      const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+      async function loginStudent() {
+          alert("Database connected!");
+      }
+
         }
     </script>
 </body>
