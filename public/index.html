@@ -29,7 +29,7 @@
                         <h3>${t.title}</h3>
                         <p>${t.description}</p>
                         <p><strong>Duration:</strong> ${t.duration_minutes} Minutes | <strong>Marks:</strong> ${t.total_marks}</p>
-                        <button onclick="alert('Test starting soon!')">Start Test</button>
+                        <button onclick="location.href='/test.html?id=' + t.id">Start Test</button>
                     </div>
                 `).join('');
             });
